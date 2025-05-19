@@ -6,6 +6,8 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
+if "GEMINI_API_KEY" not in st.secrets:
+    st.error("GEMINI_API_KEY not found in Streamlit secrets.")
 genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
 model=genai.GenerativeModel("gemini-1.5-flash")
 generate_config=GenerationConfig(temperature=0.4)
